@@ -21,6 +21,10 @@ let popButton = document.getElementById("popbtn");
 //shift
 let shiftButton = document.getElementById("shiftbtn");
 
+//remove splice
+let sliceInput = document.getElementById("slice-input");
+let slicebtn = document.getElementById("slicebtn");
+
 function pushtoarray() {
   inputArray.push(parseInt(userInput.value));
   document.getElementById("array-output").innerHTML = inputArray;
@@ -57,8 +61,16 @@ function shiftarray() {
   document.getElementById("array-output").innerHTML = inputArray;
 }
 
+function slicearray() {
+  newArray.push(inputArray.slice(sliceInput.value));
+  document.getElementById("new-array-output").innerHTML = newArray;
+  document.getElementById("array-output").innerHTML = inputArray;
+  sliceInput.value = null;
+}
+
 addButton.addEventListener("click", pushtoarray);
 splicebtn.addEventListener("click", splicearray);
 unshiftbtn.addEventListener("click", unshiftarray);
 popButton.addEventListener("click", poparray);
 shiftButton.addEventListener("click", shiftarray);
+slicebtn.addEventListener("click", slicearray);
