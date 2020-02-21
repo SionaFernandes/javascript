@@ -11,30 +11,37 @@ function LogOutput(operator, resultBeforeCalc, calcNumber) {
   const calcDescription = `${resultBeforeCalc} ${operator} ${calcNumber}`;
   outputResult(currentResult, calcDescription); //vendor file
 }
+function calaculateResult(calculationType) {
+  const enteredNumber = getUserNumberInput();
+  const initialResult = currentResult;
+  let mathOperator;
+  if (calculationType === "add") {
+    currentResult += enteredNumber;
+    mathOperator = "+";
+  } else if (calculationType === "subtract") {
+    currentResult -= enteredNumber;
+    mathOperator = "-";
+  } else if (calculationType === "multipy") {
+    currentResult *= enteredNumber;
+    mathOperator = "*";
+  } else {
+    currentResult /= enteredNumber;
+    mathOperator = "/";
+  }
+  LogOutput(mathOperator, initialResult, enteredNumber);
+}
 
 function add() {
-  const enteredNumber = getUserNumberInput();
-  const initialResult = currentResult;
-  currentResult += enteredNumber;
-  LogOutput("+", initialResult, enteredNumber);
+  calaculateResult("add");
 }
 function subtract() {
-  const enteredNumber = getUserNumberInput();
-  const initialResult = currentResult;
-  currentResult -= enteredNumber;
-  LogOutput("-", initialResult, enteredNumber);
+  calaculateResult("subtract");
 }
 function multiply() {
-  const enteredNumber = getUserNumberInput();
-  const initialResult = currentResult;
-  currentResult *= enteredNumber;
-  LogOutput("*", initialResult, enteredNumber);
+  calaculateResult("multipy");
 }
 function divide() {
-  const enteredNumber = getUserNumberInput();
-  const initialResult = currentResult;
-  currentResult /= enteredNumber;
-  LogOutput("/", initialResult, enteredNumber);
+  calaculateResult("divide");
 }
 
 addBtn.addEventListener("click", add);
