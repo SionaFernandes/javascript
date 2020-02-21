@@ -13,6 +13,16 @@ function LogOutput(operator, resultBeforeCalc, calcNumber) {
 }
 function calaculateResult(calculationType) {
   const enteredNumber = getUserNumberInput();
+  if (
+    (calculationType != "add" &&
+      calculationType != "subtract" &&
+      calculationType != "multipy" &&
+      calculationType != "divide") ||
+    !enteredNumber
+  ) {
+    return;
+  }
+
   const initialResult = currentResult;
   let mathOperator;
   if (calculationType === "add") {
@@ -28,6 +38,7 @@ function calaculateResult(calculationType) {
     currentResult /= enteredNumber;
     mathOperator = "/";
   }
+
   LogOutput(mathOperator, initialResult, enteredNumber);
 }
 
