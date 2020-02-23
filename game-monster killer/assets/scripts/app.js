@@ -43,6 +43,9 @@ function endRound() {
   } else if (currentPlayerHealth <= 0 && currentMonsterHealth <= 0) {
     alert("You have a draw!");
   }
+  if (currentMonsterHealth <= 0 || currentPlayerHealth <= 0) {
+    reset();
+  }
 }
 
 function attackHandler() {
@@ -63,6 +66,12 @@ function healPlayerHandler() {
   increasePlayerHealth(HEAL_VALUE);
   currentPlayerHealth += HEAL_VALUE;
   endRound();
+}
+
+function reset() {
+  currentMonsterHealth = chosenMaxLife;
+  currentPlayerHealth = chosenMaxLife;
+  resetGame(chosenMaxLife);
 }
 
 attackBtn.addEventListener("click", attackHandler);
